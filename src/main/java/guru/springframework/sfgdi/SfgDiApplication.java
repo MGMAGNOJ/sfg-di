@@ -1,5 +1,8 @@
 package guru.springframework.sfgdi;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -12,6 +15,7 @@ import guru.springframework.sfgdi.controllers.SetterInjectedController;
 @SpringBootApplication
 public class SfgDiApplication {
 
+	private static final Logger logger = Logger.getLogger( SfgDiApplication.class.getName() );
 	public static void main(String[] args) 
 	
 	{
@@ -21,19 +25,20 @@ public class SfgDiApplication {
 
 		String greetings = myController.SayHello();
 
-		System.out.println(greetings);
 
-		System.out.println("Property!!!");
+		logger.log(Level.INFO, greetings);
+
+		logger.log(Level.INFO,"Property!!!");
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
-		System.out.println(propertyInjectedController.getGreeting());
+		logger.log(Level.INFO,propertyInjectedController.getGreeting());
 
-		System.out.println("Setter!!!");
+		logger.log(Level.INFO,"Setter!!!");
 		SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
-		System.out.println(setterInjectedController.getGreeting());
+		logger.log(Level.INFO,setterInjectedController.getGreeting());
 
-		System.out.println("Constructor!!!");
+		logger.log(Level.INFO,"Constructor!!!");
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
-		System.out.println(constructorInjectedController.getGreeting());
+		logger.log(Level.INFO, constructorInjectedController.getGreeting());
 
 
 	}
