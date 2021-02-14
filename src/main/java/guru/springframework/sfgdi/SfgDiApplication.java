@@ -50,9 +50,22 @@ public class SfgDiApplication {
 		logger.log(Level.INFO,"FakeDataSource!!!");
 		FakeDatasourse fakeDatasourse = ctx.getBean(FakeDatasourse.class);
 
-		logger.log(Level.INFO, fakeDatasourse.getUsername());
-		logger.log(Level.INFO, fakeDatasourse.getPassword());
-		logger.log(Level.INFO, fakeDatasourse.getUrl());
+		logger.log(Level.INFO,"Source SO!!!");
+	
+		logger.log(Level.INFO, fakeDatasourse.getSoUsername());
+
+		logger.log(Level.INFO,"Source DT1!!!");
+	
+		logger.log(Level.INFO, fakeDatasourse.getDt1Username());
+		logger.log(Level.INFO, fakeDatasourse.getDt1Password());
+		logger.log(Level.INFO, fakeDatasourse.getDt1Url());
+
+
+		logger.log(Level.INFO,"Source DT2!!!");
+	
+		logger.log(Level.INFO, fakeDatasourse.getDt2Username());
+		logger.log(Level.INFO, fakeDatasourse.getDt2Password());
+		logger.log(Level.INFO, fakeDatasourse.getDt2Url());
 
 	}
 
