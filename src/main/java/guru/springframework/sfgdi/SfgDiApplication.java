@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import guru.springframework.examplebeans.FakeDatasourse;
 import guru.springframework.sfgdi.controllers.ConstructorInjectedController;
 import guru.springframework.sfgdi.controllers.I18nController;
 import guru.springframework.sfgdi.controllers.MyController;
@@ -45,6 +46,13 @@ public class SfgDiApplication {
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		logger.log(Level.INFO, constructorInjectedController.getGreeting());
 
+
+		logger.log(Level.INFO,"FakeDataSource!!!");
+		FakeDatasourse fakeDatasourse = ctx.getBean(FakeDatasourse.class);
+
+		logger.log(Level.INFO, fakeDatasourse.getUsername());
+		logger.log(Level.INFO, fakeDatasourse.getPassword());
+		logger.log(Level.INFO, fakeDatasourse.getUrl());
 
 	}
 
