@@ -5,26 +5,48 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 
 import guru.springframework.examplebeans.FakeDatasourse;
 
+
+
+
 @Configuration
-@PropertySource("classpath:datasource.properties")
+
+// Configura arquivos de DataSource para parametros.
+@PropertySources({
+    @PropertySource("classpath:datasource.properties"),
+    @PropertySource("classpath:datasource2.properties")
+})
+    
+
 public class PropertyConfig {
 
+
+    // Busta um objeto do ambiente SO
     @Autowired
     Environment env;
 
-    @Value("${username}")
-    String username;
+    @Value("${dt1.username}")
+    String dt1Username;
 
-    @Value("${password}")
-    String password;
+    @Value("${dt1.password}")
+    String dt1Password;
 
-    @Value("${url}")
-    String url;
+    @Value("${dt1.url}")
+    String dt1Url;
+
+    @Value("${dt2.username}")
+    String dt2Username;
+
+    @Value("${dt2.password}")
+    String dt2Password;
+
+    @Value("${dt2.url}")
+    String dt2Url;
 
     
 
@@ -33,10 +55,16 @@ public class PropertyConfig {
         FakeDatasourse fakeDatasourse = new FakeDatasourse();
         //fakeDatasourse.setUsername(username);
         
-        fakeDatasourse.setUsername(env.getProperty("USERNAME"));
+        fakeDatasourse.setSoUsername(env.getProperty("USERNAME"));
 
-        fakeDatasourse.setPassword(password);
-        fakeDatasourse.setUrl(url);
+        fakeDatasourse.setDt1Username(dt1Username);
+        fakeDatasourse.setDt1Password(dt1Password);
+        fakeDatasourse.setDt1Url(dt1Url);
+
+        fakeDatasourse.setDt2Username(dt2Username);
+        fakeDatasourse.setDt2Password(dt2Password);
+        fakeDatasourse.setDt2Url(dt2Url);
+
         return fakeDatasourse;
     }
 
